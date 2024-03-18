@@ -1,0 +1,9 @@
+model = TABS_new(img_dim = input_patch_size,
+            patch_dim = 8,
+            img_ch = 1,
+            output_ch = 32,
+            embedding_dim = 1024,
+            num_heads = 16,
+            num_layers = 8,
+            dropout_rate = 0.1,
+            attn_dropout_rate = 0.1)

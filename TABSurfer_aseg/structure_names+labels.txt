@@ -1,0 +1,88 @@
+subcortical_structure_labels = {
+    #2: "Left-Cerebral-White-Matter", #
+    4: "Left-Lateral-Ventricle",
+    5: "Left-Inf-Lat-Vent",
+    7: "Left-Cerebellum-White-Matter",
+    8: "Left-Cerebellum-Cortex",
+    10: "Left-Thalamus-Proper",
+    11: "Left-Caudate",
+    12: "Left-Putamen",
+    13: "Left-Pallidum",
+    14: "3rd-Ventricle",
+    15: "4th-Ventricle",
+    16: "Brain-Stem",
+    17: "Left-Hippocampus",
+    18: "Left-Amygdala",
+    24: "CSF",
+    26: "Left-Accumbens-area",
+    28: "Left-VentralDC",
+    31: "Left-choroid-plexus",
+    #41: "Right-Cerebral-White-Matter", #
+    43: "Right-Lateral-Ventricle", 
+    44: "Right-Inf-Lat-Vent",
+    46: "Right-Cerebellum-White-Matter",
+    47: "Right-Cerebellum-Cortex",
+    49: "Right-Thalamus-Proper",
+    50: "Right-Caudate",
+    51: "Right-Putamen",
+    52: "Right-Pallidum",
+    53: "Right-Hippocampus",
+    54: "Right-Amygdala",
+    58: "Right-Accumbens-area",
+    60: "Right-VentralDC",
+    63: "Right-choroid-plexus",
+    77: "WM-hypointensities"
+}
+
+Cortical Structures	Proposed	FS
+
+14
+caudalanteriorcingulate (lh)	34	1002
+cuneus (lh)	36	1005
+isthmuscingulate (lh)	41	1010
+lateralorbitofrontal (lh)	43	1012
+lingual (lh)	44	1013
+medialorbitofrontal (lh)	45	1014
+parahippocampal (lh)	47	1016
+paracentral (lh)	48	1017
+pericalcarine (lh)	52	1021
+postcentral (lh)	53	1022
+posteriorcingulate (lh)	54	1023
+precentral (lh)	55	1024
+precuneus (lh)	56	1025
+superiorfrontal (lh)	59	1028
+
+14
+caudalanteriorcingulate (rh)	65	2002
+cuneus (rh)	66	2005
+isthmuscingulate (rh)	67	2010
+lateralorbitofrontal (rh)	68	2012
+lingual (rh)	69	2013
+medialorbitofrontal (rh)	70	2014
+parahippocampal (rh)	71	2016
+paracentral (rh)	72	2017
+pericalcarine (rh)	73	2021
+postcentral (rh)	74	2022
+posteriorcingulate (rh)	75	2023
+precentral (rh)	76	2024
+precuneus (rh)	77	2025
+superiorfrontal (rh)	78	2028
+
+17
+caudalmiddlefrontal (lh, rh)	35	1003, 2003
+entorhinal (lh, rh)	37	1006, 2006
+fusiform (lh, rh)	38	1007, 2007
+inferiorparietal (lh, rh)	39	1008, 2008
+inferiortemporal (lh, rh)	40	1009, 2009
+lateraloccipital (lh, rh)	42	1011, 2011
+middletemporal (lh, rh)	46	1015, 2015
+parsopercularis (lh, rh)	49	1018, 2018
+parsorbitalis (lh, rh)	50	1019, 2019
+parstriangularis (lh, rh)	51	1020, 2020
+rostralanteriorcingulate (lh, rh)	57	1026, 2026
+rostralmiddlefrontal (lh, rh)	58	1027, 2027
+superiorparietal (lh, rh)	60	1029, 2029
+superiortemporal (lh, rh)	61	1030, 2030
+supramarginal (lh, rh)	62	1031, 2031
+transversetemporal (lh, rh)	63	1034, 2034
+insula (lh, rh)	64	1035, 2035
