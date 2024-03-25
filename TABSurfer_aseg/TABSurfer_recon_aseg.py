@@ -9,6 +9,7 @@ import random
 from tqdm import tqdm
 import ipdb
 from conform import conform, is_conform
+import os
 parser = argparse.ArgumentParser()
 parser.add_argument('--seed', default = 1000, type=int)
 
@@ -16,7 +17,9 @@ parser.add_argument('--input_path', default='', type=str)
 parser.add_argument('--output_T1_path', default='', type=str) 
 parser.add_argument('--output_aseg_path', default='', type=str) 
 
-parser.add_argument('--model_path', default='TABSurfer_aseg/model_checkpoints/TABSurfer_ISBI_final.pt', type=str)
+parser.add_argument('--model_path', default=
+                    os.path.join(os.path.dirname(__file__), 'model_checkpoints', 'TABSurfer_ISBI_final.pt'), 
+                    type=str)
 
 parser.add_argument('--gpu_available', default=True, type=bool) 
 parser.add_argument('--gpu_id', default=0, type=int) 
@@ -173,8 +176,6 @@ if __name__ == '__main__':
     padded_full_predicted_scan = np.pad(full_predicted_scan, padding, mode='constant', constant_values=0)
     print(padded_full_predicted_scan.shape, flush=True)
 
-    '''orig_mapping = {0: 0, 4: 1, 5: 2, 7: 3, 8: 4, 10: 5, 11: 6, 12: 7, 13: 8, 14: 9, 15: 10, 16: 11, 17: 12, 18: 13, 24: 14, 26: 15, 28: 16, 31: 17, 43: 18, 44: 19, 46: 20, 47: 21, 49: 22, 50: 23, 51: 24, 52: 25, 53: 26, 54: 27, 58: 28, 60: 29, 63: 30, 77: 31}
-    reversed_mapping = {value: key for key, value in orig_mapping.items()}'''
     padded_full_predicted_scan = map_free_surfer_labels(padded_full_predicted_scan)
 
     #ipdb.set_trace()

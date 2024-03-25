@@ -14,7 +14,8 @@ parser.add_argument('--input_dir', default='', type=str)
 parser.add_argument('--output_dir', default='processed', type=str) 
 parser.add_argument('--mgz', default=False, type=bool) 
 
-parser.add_argument('--model_path', default='model_checkpoints/20scan/newmodel2_wceloss11.epoch200.pt', type=str)
+parser.add_argument('--model_path', default=os.path.join(os.path.dirname(__file__), 'model_checkpoints', 'TABSurfer_ISBI_final.pt'),
+                    type=str)
 
 parser.add_argument('--gpu_available', default=True, type=bool) 
 parser.add_argument('--gpu_id', default=0, type=int) 
