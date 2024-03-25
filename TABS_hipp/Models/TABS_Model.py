@@ -228,37 +228,3 @@ class TABS_hipp(nn.Module):
         x = x.permute(0, 4, 1, 2, 3).contiguous()  # 1 1024 7 7 7
 
         return x
-
-if __name__ == '__main__':
-    
-    gpu_id = 1
-    torch.cuda.empty_cache()
-    memory_before = torch.cuda.mem_get_info(gpu_id)[0] / 1e9
-    
-    size = 96
-    '''model = TABSurfer_full_64(img_dim = size,
-        patch_dim = 8,
-        img_ch = 1,
-        output_ch = 34,
-        embedding_dim = 1024,
-        num_heads = 16,
-        num_layers = 8) # 7.7 gig'''
-    model = TABS_hipp(img_dim = size)
-    #size = 96
-    print(sum(p.numel() for p in model.parameters()), flush = True)
-    test = torch.rand([1,1,size,size,size])
-    #test = torch.rand([1])
-    
-    test = test.cuda(gpu_id)
-    model = model.cuda(gpu_id)
-    model.eval()
-    with torch.no_grad():
-        out = model(test)
-    
-    #with torch.no_grad():
-    #    out = model(test)
-    print(out.shape)
-    memory_after = torch.cuda.mem_get_info(gpu_id)[0] / 1e9
-    print(memory_before, memory_after)
-    print(f'{memory_before - memory_after} gigs used')
-    

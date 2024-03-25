@@ -1,1 +1,3 @@
 For subcortical segmentation, download the TABSurfer_ISBI_final.pt model checkpoint from https://drive.google.com/drive/folders/1veG07IPXYrIDWWO2C6jYpex2LEu4sgfF?usp=drive_link and put it in the /TABSurfer_aseg/model_checkpoints/ folder
+
+For hippocampus subfield segmentation, download the TABSurfer_hsf.pt model checkpoint from https://drive.google.com/file/d/19DQVAHFRKEUPMZ0A9bQJOsXrnVyr1-5U/view?usp=drive_link and put it in the /TABS_hipp/model_checkpoints/ folder
