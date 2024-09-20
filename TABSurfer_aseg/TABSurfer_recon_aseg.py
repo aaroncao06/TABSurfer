@@ -173,7 +173,7 @@ if __name__ == '__main__':
     else:
         try:
             nib.save(t1, t1_filename)
-            print('saved conformed t1', flush=True)
+            print(f'saved conformed t1: {t1_filename}', flush=True)
         except:
             print(f'save conformed t1 failed: {t1_filename}')
     print('fetch model', flush=True)
@@ -215,6 +215,6 @@ if __name__ == '__main__':
     seg_filename = args.output_aseg_path
     try:
         nib.save(seg, seg_filename)
-        print('done', flush=True)
+        print(f'done, aseg saved: {seg_filename}', flush=True)
     except:
         print(f'save aseg failed: {seg_filename}')
