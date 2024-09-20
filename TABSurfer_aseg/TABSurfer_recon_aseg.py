@@ -169,7 +169,10 @@ if __name__ == '__main__':
     print(t1.shape, flush=True)
     print('save conform', flush=True)
     t1_filename = args.output_T1_path
-    nib.save(t1, t1_filename)
+    if t1_filename == '':
+        print('dont save conformed input', flush=True)
+    else:
+        nib.save(t1, t1_filename)
     print('fetch model', flush=True)
     model = TABS_new(img_dim = 96,
         patch_dim = 8,
