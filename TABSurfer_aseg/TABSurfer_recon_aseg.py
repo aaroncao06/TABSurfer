@@ -167,12 +167,15 @@ if __name__ == '__main__':
     else:
         t1 = conform(input_img)
     print(t1.shape, flush=True)
-    print('save conform', flush=True)
     t1_filename = args.output_T1_path
     if t1_filename == '':
         print('dont save conformed input', flush=True)
     else:
-        nib.save(t1, t1_filename)
+        try:
+            nib.save(t1, t1_filename)
+            print('saved conformed t1', flush=True)
+        except:
+            print(f'save conformed t1 failed: {t1_filename}')
     print('fetch model', flush=True)
     model = TABS_new(img_dim = 96,
         patch_dim = 8,
@@ -210,5 +213,8 @@ if __name__ == '__main__':
         [0.0, 0.0, 0.0, 1.0]])
     seg = nib.Nifti1Image(np.uint16(padded_full_predicted_scan), affine=fs_affine_matrix)
     seg_filename = args.output_aseg_path
-    nib.save(seg, seg_filename)
-    print('done', flush=True)
+    try:
+        nib.save(seg, seg_filename)
+        print('done', flush=True)
+    except:
+        print(f'save aseg failed: {seg_filename}')
