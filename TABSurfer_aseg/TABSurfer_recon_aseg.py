@@ -42,7 +42,24 @@ def before_and_after(array):
     before = np.argmax(array)
     after = len(array)-np.sum(array)-before
     return before, after
-
+def pad_or_crop_array(array, padding):
+    slices = []
+    for i, (pad_before, pad_after) in enumerate(padding):
+        shape = array.shape[i]
+        start = max(0, -pad_before)
+        end = shape - max(0, -pad_after)
+        slices+=[start, end]
+    
+    cropped_array = array[slices[0]:slices[1],slices[2]:slices[3],slices[4]:slices[5]]
+    
+    final_padding = []
+    for pad_before, pad_after in padding:
+        pad_before = max(0, pad_before)
+        pad_after = max(0, pad_after)
+        final_padding.append((pad_before, pad_after))
+    
+    padded_array = np.pad(cropped_array, final_padding, mode='constant', constant_values=0)
+    return padded_array
 def crop_image_full_flush(conformed_img, step_size): #158, 170, 202 max raw
 
     valid_slices_x = ~np.all(conformed_img == 0, axis=(1, 2))
@@ -77,11 +94,14 @@ def crop_image_full_flush(conformed_img, step_size): #158, 170, 202 max raw
 
     pad_before_z -= width_pad_before
     pad_after_z -= width_pad_after
-    
-    final_conformed_img = np.pad(cropped_conformed_img, ((depth_pad_before, depth_pad_after),
+
+    final_conformed_img = pad_or_crop_array(cropped_conformed_img, ((depth_pad_before, depth_pad_after),
                                                            (height_pad_before, height_pad_after),
-                                                           (width_pad_before, width_pad_after)),
-                                   mode='constant', constant_values=0)
+                                                           (width_pad_before, width_pad_after)))
+    # final_conformed_img = np.pad(cropped_conformed_img, ((depth_pad_before, depth_pad_after),
+    #                                                        (height_pad_before, height_pad_after),
+    #                                                        (width_pad_before, width_pad_after)),
+    #                                mode='constant', constant_values=0)
 
     padding = ((pad_before_x, pad_after_x),(pad_before_y, pad_after_y),(pad_before_z, pad_after_z))
     return final_conformed_img, padding
@@ -173,7 +193,8 @@ if __name__ == '__main__':
     print('run inference', flush=True)
     full_predicted_scan = run_and_reconstruct(model, num_classes = 32, image = cropped_t1_img, patch_size=96, step=args.step_size, cuda = args.gpu_available)
     print('save segmentation', flush=True)
-    padded_full_predicted_scan = np.pad(full_predicted_scan, padding, mode='constant', constant_values=0)
+    padded_full_predicted_scan = pad_or_crop_array(full_predicted_scan, padding)
+    # padded_full_predicted_scan = np.pad(full_predicted_scan, padding, mode='constant', constant_values=0)
     print(padded_full_predicted_scan.shape, flush=True)
 
     padded_full_predicted_scan = map_free_surfer_labels(padded_full_predicted_scan)
