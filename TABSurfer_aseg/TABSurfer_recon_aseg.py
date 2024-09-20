@@ -24,7 +24,7 @@ parser.add_argument('--model_path', default=
 parser.add_argument('--gpu_available', default=True, type=bool) 
 parser.add_argument('--gpu_id', default=0, type=int) 
 
-parser.add_argument('--step_size', default=16, type=int)
+parser.add_argument('--step_size', default=32, type=int)
 
 
 '''input path 
@@ -205,7 +205,7 @@ if __name__ == '__main__':
         [0.0, 0.0, 1.0, -145.0],
         [0.0, -1.0, 0.0, 147.0],
         [0.0, 0.0, 0.0, 1.0]])
-    seg = nib.Nifti1Image(padded_full_predicted_scan, affine=fs_affine_matrix)
+    seg = nib.Nifti1Image(np.uint16(padded_full_predicted_scan), affine=fs_affine_matrix)
     seg_filename = args.output_aseg_path
     nib.save(seg, seg_filename)
     print('done', flush=True)
